@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">{{account.name}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('rstudent') }}">Students <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('account') }}">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+ 
+{% if account %} 
+
+<div class="section-margin">
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">University Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Batch</th>
+                <th scope="col">Sem</th>
+                <th scope="col">College id</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in account %}
+                <tr>
+                    <td>{{i.uid}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.batch}}</td>
+                    <td>{{i.sem}}</td>
+                    <td>{{i.id}}</td>
+                    <td><a href="{{ url_for('ustudent') }}" class="btn btn-primary">Update Student</a></td>
+                    <td><a href="{{ url_for('dstudent') }}" class="btn btn-primary">Delete Student</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% else %}
+
+<h1>No Students to Display</h1>
+
+{% endif %}
+
+<div class="section-margin">
+  <div class="container">
+    <div class="row">
+      <center>
+      <a href="{{ url_for('cstudent') }}" class="btn btn-primary">Add Student</a>
+      </center>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

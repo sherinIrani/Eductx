@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="section-margin">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8">
+                    <form action="{{ url_for('cstudent') }}" method="POST" id="form-cstudent">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">University ID</label>
+                                <input type="text" class="form-control" name="inputUid">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" name="inputPassword">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Name</label>
+                            <input type="text" class="form-control" name="inputName">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Batch</label>
+                                <input type="text" class="form-control" name="inputBatch">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Sem</label>
+                                <input type="text" class="form-control" name="inputSem">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Student</button>
+                    </form>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
